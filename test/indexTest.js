@@ -68,3 +68,41 @@ describe('employees', function() {
     });
   });
 });
+
+// define employee
+let employee;
+beforeEach(function () {
+  employee = {
+    name: 'Sam'
+  };
+})
+
+// function to update an employee object with a key-value
+function updateEmployeeWithKeyAndValue(employee, key, value) {
+  // use spread operator to create new object with existing properties
+  return {
+    ...employee,
+    [key]: value
+  };
+}
+
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+  employee[key] = value;
+  return employee;
+}
+
+  // function to delete key from a clone
+  function deleteFromEmployeeByKey(employee, key) {
+    // create copy
+    let newEmployee = Object.assign({}, employee);
+
+    delete newEmployee[key];
+
+    return newEmployee;
+  }
+
+  function destructivelyDeleteFromEmployeeByKey(employee, key) {
+    // Delete key from original object
+    delete employee[key];
+    return employee;
+  }
